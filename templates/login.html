@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+
+  <div class="card shadow p-5" style="max-width: 400px; width: 100%;">
+    <div class="text-center mb-4">
+      <img src="assets/img/logo.png" alt="Logo" width="70" class="mb-2">
+      <h4 class="fw-bold text-primary">Login E-Voting</h4>
+    </div>
+    {% if error %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{error}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <form action="{{url_for('login')}}" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-control form-control-lg"
+          placeholder="Masukkan username">
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-control form-control-lg"
+          placeholder="Masukkan password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

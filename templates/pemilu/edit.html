@@ -1,0 +1,46 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+<div class="container py-5">
+  <h3 class="fw-bold mb-4 text-primary">Ubah Data Pemilih</h3>
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
+      <div class="card p-4">
+        <form action="{{ url_for('edit_pemilu', id=data.id_pemilu) }}" method="POST">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nama_pemilu" name="nama_pemilu"
+                   placeholder="Masukkan Nama" value="{{ data.nama_pemilu }}" required />
+            <label for="nama_pemilu">Nama Pemilu</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required
+                   value="{{ data.tanggal_mulai }}" />
+            <label for="tanggal_mulai">Tanggal Mulai</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" required
+                   value="{{ data.tanggal_selesai }}" />
+            <label for="tanggal_selesai">Tanggal Selesai</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <select class="form-select" id="status" name="status" aria-label="Floating label">
+              <option value="" disabled {% if not data.status %}selected{% endif %}>Pilih Status:</option>
+              <option value="Aktif" {% if data.status == 'Aktif' %}selected{% endif %}>Aktif</option>
+              <option value="Non-Aktif" {% if data.status == 'Non-Aktif' %}selected{% endif %}>Non-Aktif</option>
+            </select>
+            <label for="status">Status</label>
+          </div>
+
+          <div class="text-end">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-save2-fill me-2"></i> Simpan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
